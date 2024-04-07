@@ -7,7 +7,6 @@ import 'view/tela_lista_view.dart';
 import 'view/tela_login_view.dart';
 import 'view/tela_view_sobre.dart';
 
-
 void main() {
   runApp(
     DevicePreview(
@@ -34,7 +33,7 @@ class _PrincipalViewState extends State<PrincipalView> {
         'cadastrar': (context) => CadastroView(),
         'login': (context) => LoginView(),
         'lista': (context) => ListaView(),
-        'sobre':(context) => SobreView()
+        'sobre': (context) => SobreView()
       },
     );
   }
