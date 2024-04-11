@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../model/lista.dart';
 
-
 class ListaView extends StatefulWidget {
   const ListaView({super.key});
   @override
@@ -12,31 +11,29 @@ class ListaView extends StatefulWidget {
 }
 
 class _ListaViewState extends State<ListaView> {
-  
   @override
   void initState() {
     index = -1;
     super.initState();
   }
 
-  
   List<Tarefas> lista = [];
   var index;
   var txtTitulo = TextEditingController();
   var txtDescricao = TextEditingController();
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Lista de Tarefas',
-            style: TextStyle(fontSize: 35, color: Colors.white),
-          ),
-          centerTitle: true,
-          backgroundColor: Color(0xFF6495ED),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Lista de Compras',
+          style: TextStyle(fontSize: 35, color: Colors.white),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        centerTitle: true,
+        backgroundColor: Color(0xFF6495ED),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
             flex: 1,
@@ -48,8 +45,7 @@ class _ListaViewState extends State<ListaView> {
           ),
         ],
       ),
-
-      );
+    );
   }
 
   //função add tarefa
@@ -75,7 +71,7 @@ class _ListaViewState extends State<ListaView> {
             controller: txtDescricao,
             style: TextStyle(fontSize: 24),
             decoration: InputDecoration(
-              labelText: 'Descreva a tarefa',
+              labelText: 'Liste os itens',
               labelStyle: TextStyle(fontSize: 18),
               icon: Icon(Icons.description),
             ),
@@ -97,9 +93,12 @@ class _ListaViewState extends State<ListaView> {
                     if (txtTitulo.text.isNotEmpty &&
                         txtDescricao.text.isNotEmpty) {
                       if (index == -1) {
-                        lista.add(Tarefas(txtTitulo.text,txtDescricao.text),);
+                        lista.add(
+                          Tarefas(txtTitulo.text, txtDescricao.text),
+                        );
                       } else {
-                        lista[index] = Tarefas(txtTitulo.text, txtDescricao.text);
+                        lista[index] =
+                            Tarefas(txtTitulo.text, txtDescricao.text);
                       }
                       txtTitulo.clear();
                       txtDescricao.clear();
@@ -120,8 +119,7 @@ class _ListaViewState extends State<ListaView> {
 
   //função listar tarefa
   listarTarefa() {
-    return 
-    Container(
+    return Container(
       padding: const EdgeInsets.all(20.0),
       child: ListView.builder(
         itemCount: lista.length,
@@ -131,12 +129,13 @@ class _ListaViewState extends State<ListaView> {
               title: Text(lista[index].titulo),
               subtitle: Text(lista[index].descricao),
               leading: Checkbox(
-                value: lista[index].isChecked, 
+                value: lista[index].isChecked,
                 onChanged: (value) {
                   setState(() {
                     lista[index].isChecked = value;
                   });
-                },),
+                },
+              ),
               trailing: IconButton(
                 icon: Icon(Icons.delete_outline),
                 onPressed: () {
@@ -159,11 +158,14 @@ class _ListaViewState extends State<ListaView> {
     );
   }
 
-  //mensagem para o rodapé 
+  //mensagem para o rodapé
   mensagem(String msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(msg, style: TextStyle(fontSize: 20),),
+        content: Text(
+          msg,
+          style: TextStyle(fontSize: 20),
+        ),
         duration: Duration(seconds: 2),
         backgroundColor: Colors.red,
       ),

@@ -57,9 +57,7 @@ class _SobreViewState extends State<SobreView> {
                       Padding(
                         padding: EdgeInsets.all(40),
                         child: Text(
-                          'Gerencie sua lista de lembretes e a modifique como bem desejar.\n'
-                          'Escreva um lembrete para um compromisso ou simplesmente faça uma\n' 
-                          'lista de afazeres em um dia ou hora em específico.',
+                          'Gerencie sua lista de compras e a modifique como bem desejar.',
                           style: TextStyle(
                             fontSize: 15,
                           ),
